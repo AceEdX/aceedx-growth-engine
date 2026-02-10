@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
-import { getFeaturedPosts, blogPosts } from "@/data/blogPosts";
+import { useBlogStore } from "@/stores/blogStore";
+import aceedxLogo from "@/assets/aceedx-logo.png";
 
 const Index = () => {
+  const { posts, getFeaturedPosts } = useBlogStore();
   const featured = getFeaturedPosts();
-  const recent = blogPosts.slice(0, 6);
+  const recent = posts.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-background">
@@ -17,8 +19,8 @@ const Index = () => {
       {/* Hero */}
       <section className="gradient-hero relative overflow-hidden py-20 md:py-28">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 h-64 w-64 rounded-full bg-brand-teal blur-3xl" />
-          <div className="absolute bottom-10 right-20 h-48 w-48 rounded-full bg-brand-gold blur-3xl" />
+          <div className="absolute top-20 left-10 h-64 w-64 rounded-full bg-primary blur-3xl" />
+          <div className="absolute bottom-10 right-20 h-48 w-48 rounded-full bg-accent blur-3xl" />
         </div>
         <div className="container relative z-10 mx-auto px-4">
           <motion.div
@@ -27,7 +29,7 @@ const Index = () => {
             transition={{ duration: 0.7 }}
             className="mx-auto max-w-3xl text-center"
           >
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-teal/30 bg-brand-teal/10 px-4 py-2 text-sm text-primary-foreground/80">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary-foreground/80">
               <TrendingUp className="h-4 w-4" />
               Insights for Schools, Parents & Educators
             </div>
@@ -55,7 +57,7 @@ const Index = () => {
       <section className="border-b border-border bg-card">
         <div className="container mx-auto grid grid-cols-3 divide-x divide-border px-4 py-6">
           {[
-            { icon: BookOpen, label: "Articles", value: `${blogPosts.length}+` },
+            { icon: BookOpen, label: "Articles", value: `${posts.length}+` },
             { icon: Users, label: "For Parents & Teachers", value: "Expert" },
             { icon: TrendingUp, label: "SEO Optimized", value: "100%" },
           ].map(({ icon: Icon, label, value }) => (

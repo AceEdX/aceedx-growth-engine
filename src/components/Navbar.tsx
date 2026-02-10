@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ExternalLink, Menu, X } from "lucide-react";
+import { ExternalLink, Menu, X, Phone } from "lucide-react";
+import aceedxLogo from "@/assets/aceedx-logo.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "Blog", to: "/blog" },
   { label: "About", to: "/about" },
+  { label: "Admin", to: "/admin" },
 ];
 
 const Navbar = () => {
@@ -14,19 +16,16 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg">
-      <div className="container mx-auto flex items-center justify-between px-4 py-3">
+      <div className="container mx-auto flex items-center justify-between px-4 py-2">
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary font-bold text-primary-foreground text-sm">
-            A
-          </div>
+          <img src={aceedxLogo} alt="AceEdX Logo" className="h-10 w-auto" />
           <span className="text-lg font-bold text-foreground">
-            Ace<span className="text-primary">EdX</span>
-            <span className="ml-1.5 text-xs font-normal text-muted-foreground">Blog</span>
+            <span className="text-primary">Blog</span>
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-5 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -40,6 +39,21 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          <a
+            href="tel:9373387800"
+            className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
+            <Phone className="h-3.5 w-3.5" />
+            9373387800
+          </a>
+          <a
+            href="https://chat.whatsapp.com/DRFnvBygAX60wLmuvXRrfa?mode=gi_c"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Join WhatsApp
+          </a>
           <a
             href="https://www.aceedx.com"
             target="_blank"
@@ -78,6 +92,17 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          <a href="tel:9373387800" className="block py-2 text-sm font-medium text-muted-foreground">
+            📞 9373387800
+          </a>
+          <a
+            href="https://chat.whatsapp.com/DRFnvBygAX60wLmuvXRrfa?mode=gi_c"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 block w-full rounded-lg bg-green-600 px-4 py-2 text-center text-sm font-medium text-primary-foreground"
+          >
+            Join WhatsApp Community
+          </a>
           <a
             href="https://www.aceedx.com"
             target="_blank"

@@ -4,27 +4,29 @@ import { Search } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
-import { blogPosts, categories, getPostsByCategory } from "@/data/blogPosts";
+import { categories } from "@/data/blogPosts";
+import { useBlogStore } from "@/stores/blogStore";
 
 const BlogListing = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get("category") || "All";
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState("");
+  const { posts, getPostsByCategory } = useBlogStore();
 
   const filtered = useMemo(() => {
-    let posts = getPostsByCategory(activeCategory);
+    let result = getPostsByCategory(activeCategory);
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
-      posts = posts.filter(
+      result = result.filter(
         (p) =>
           p.title.toLowerCase().includes(q) ||
           p.excerpt.toLowerCase().includes(q) ||
           p.tags.some((t) => t.toLowerCase().includes(q))
       );
     }
-    return posts;
-  }, [activeCategory, searchQuery]);
+    return result;
+  }, [activeCategory, searchQuery, posts]);
 
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat);
@@ -106,7 +108,7 @@ const BlogListing = () => {
         )}
 
         <div className="mt-8 text-center text-sm text-muted-foreground">
-          Showing {filtered.length} of {blogPosts.length} articles
+          Showing {filtered.length} of {posts.length} articles
         </div>
       </div>
 
