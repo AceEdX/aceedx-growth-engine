@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Clock, ArrowRight } from "lucide-react";
 import type { BlogPost } from "@/data/blogPosts";
+import { blogImages } from "@/data/blogImages";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -8,6 +9,8 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ post, featured = false }: BlogCardProps) => {
+  const image = blogImages[post.slug];
+
   return (
     <Link
       to={`/blog/${post.slug}`}
@@ -16,12 +19,26 @@ const BlogCard = ({ post, featured = false }: BlogCardProps) => {
       }`}
     >
       <div
-        className={`relative overflow-hidden bg-muted ${
+        className={`relative overflow-hidden ${
           featured ? "md:w-2/5" : "aspect-[16/9]"
         }`}
       >
-        <div className="flex h-full min-h-[200px] items-center justify-center bg-gradient-to-br from-primary/10 via-muted to-accent/10 p-8">
-          <span className="rounded-md bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
+        {image ? (
+          <img
+            src={image}
+            alt={post.title}
+            className="h-full min-h-[200px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full min-h-[200px] items-center justify-center bg-gradient-to-br from-primary/10 via-muted to-accent/10 p-8">
+            <span className="rounded-md bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
+              {post.category}
+            </span>
+          </div>
+        )}
+        <div className="absolute top-3 left-3">
+          <span className="rounded-md bg-primary/90 px-2.5 py-1 text-xs font-semibold text-primary-foreground backdrop-blur-sm">
             {post.category}
           </span>
         </div>

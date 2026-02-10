@@ -7,15 +7,15 @@
 @layer base {
   :root {
     --background: 210 20% 98%;
-    --foreground: 220 25% 10%;
+    --foreground: 220 40% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 10%;
+    --card-foreground: 220 40% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
+    --popover-foreground: 220 40% 13%;
 
-    --primary: 165 60% 40%;
+    --primary: 215 80% 55%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 20% 94%;
@@ -32,17 +32,17 @@
 
     --border: 214 20% 90%;
     --input: 214 20% 90%;
-    --ring: 165 60% 40%;
+    --ring: 215 80% 55%;
 
     --radius: 0.75rem;
 
     --brand-deep: 220 40% 13%;
-    --brand-teal: 165 60% 40%;
-    --brand-teal-light: 165 50% 95%;
-    --brand-gold: 38 92% 50%;
-    --brand-gold-light: 38 80% 95%;
     --brand-blue: 215 80% 55%;
     --brand-blue-light: 215 70% 95%;
+    --brand-gold: 38 92% 50%;
+    --brand-gold-light: 38 80% 95%;
+    --brand-teal: 165 60% 40%;
+    --brand-teal-light: 165 50% 95%;
     --brand-purple: 270 50% 55%;
     --brand-purple-light: 270 40% 95%;
 
@@ -63,7 +63,7 @@
     --card-foreground: 210 20% 95%;
     --popover: 220 25% 9%;
     --popover-foreground: 210 20% 95%;
-    --primary: 165 60% 45%;
+    --primary: 215 80% 60%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 20% 15%;
     --secondary-foreground: 210 20% 90%;
@@ -75,7 +75,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 220 20% 18%;
     --input: 220 20% 18%;
-    --ring: 165 60% 45%;
+    --ring: 215 80% 60%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -102,22 +102,22 @@
 
 @layer utilities {
   .gradient-hero {
-    background: linear-gradient(135deg, hsl(var(--brand-deep)) 0%, hsl(165 50% 18%) 50%, hsl(var(--brand-teal) / 0.9) 100%);
+    background: linear-gradient(135deg, hsl(var(--brand-deep)) 0%, hsl(215 70% 25%) 50%, hsl(var(--brand-blue) / 0.9) 100%);
   }
-  .gradient-card-teal {
-    background: linear-gradient(135deg, hsl(var(--brand-teal-light)) 0%, hsl(0 0% 100%) 100%);
+  .gradient-card-blue {
+    background: linear-gradient(135deg, hsl(var(--brand-blue-light)) 0%, hsl(0 0% 100%) 100%);
   }
   .gradient-card-gold {
     background: linear-gradient(135deg, hsl(var(--brand-gold-light)) 0%, hsl(0 0% 100%) 100%);
   }
-  .gradient-card-blue {
-    background: linear-gradient(135deg, hsl(var(--brand-blue-light)) 0%, hsl(0 0% 100%) 100%);
+  .gradient-card-teal {
+    background: linear-gradient(135deg, hsl(var(--brand-teal-light)) 0%, hsl(0 0% 100%) 100%);
   }
   .gradient-card-purple {
     background: linear-gradient(135deg, hsl(var(--brand-purple-light)) 0%, hsl(0 0% 100%) 100%);
   }
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--brand-teal)) 0%, hsl(var(--brand-gold)) 100%);
+    background: linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-gold)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

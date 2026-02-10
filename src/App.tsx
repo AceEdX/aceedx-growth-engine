@@ -7,7 +7,9 @@ import Index from "./pages/Index";
 import BlogListing from "./pages/BlogListing";
 import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import AceChatbot from "./components/AceChatbot";
 
 const queryClient = new QueryClient();
 
@@ -22,8 +24,10 @@ const App = () => (
           <Route path="/blog" element={<BlogListing />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/about" element={<About />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <AceChatbot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
